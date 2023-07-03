@@ -3,26 +3,36 @@ const History = require('./historymodel');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const port = 3001;
+const port = 5000;
 
 app.use(bodyParser.json()); 
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use((_, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*'); // or 'localhost:8888'
+    res.set('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
+    res.set(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept'
+    );
+    return next();
+  }); // sets headers before route
 app.get('/gethistory', async (req, res) => {
     try{
         const history = await History.find({});
         res.send(history);
 
     }catch(err){
-        res.status(500).json({message : err});
+        res.send(err);
     }
 }
 );
 app.delete('/deletehistory', async (req, res) => {
     try{
         const history = await History.deleteMany({});
-        res.send(history);
+        res.send("Sudah dihapus semua");
     }catch(err){
-        res.status(500).json({message : err});
+        res.send(err);
     }
 }
 );
@@ -39,7 +49,7 @@ app.post('/encode/LZW', async (req, res) => {
         const history = await History.create(coba);
         res.send(coba.output);
     }catch(err){
-        res.status(500).json({message : err});
+        res.send(err);
     }
 
 });
@@ -53,13 +63,13 @@ app.post('/decode/LZW', async (req, res) => {
             "algoritma" : "LZW"
         };
         if(coba.output == false){
-            res.status(500).json({message : "Input harus berupa angka!"});
+            res.send("Input masih ada yang salah!");
         }else{
             const history = await History.create(coba);
             res.send(coba.output);
         }
     }catch(err){
-        res.status(500).json({message : err});
+        res.send(err);
     }
 
 });
@@ -75,7 +85,7 @@ app.post('/encode/LZW_RLE', async (req, res) => {
         const history = await History.create(coba);
         res.send(coba.output);
     }catch(err){
-        res.status(500).json({message : err});
+        res.send(err);
     }
 
 });
@@ -89,17 +99,16 @@ app.post('/decode/LZW_RLE', async (req, res) => {
             "algoritma" : "LZW+RLE"
         };
         if(coba.output == false){
-            res.status(500).json({message : "Input harus berupa angka!"});
+            res.send("Input masih ada yang salah!");
         }else{
             const history = await History.create(coba);
             res.send(coba.output);
         }
     }catch(err){
-        res.status(500).json({message : err});
+        res.send(err);
     }
 
 });
-
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
