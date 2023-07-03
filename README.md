@@ -32,17 +32,19 @@
  - Setelah itu klik decompress. Nanti teks hasil decode akan keluar pada bagian output sesuai dengan algortima dan tipe decoder yang dipilih
 ## Dokumentasi
  1. Tampilan Web
-<img width="945" alt="image" src="https://github.com/SulthanDA28/LZW-13521159/assets/110533939/07580921-dcef-43c2-a70d-8fcb3b0ac9ba">
+<img width="947" alt="tampilan" src="https://github.com/SulthanDA28/LZW-13521159/assets/110533939/f0fcc56b-32ac-4549-9c3e-acc019b5a042">
+
 
 <br>
 
  2. Dengan algoritma LZW dengan keluaran decimal
-<img width="944" alt="image" src="https://github.com/SulthanDA28/LZW-13521159/assets/110533939/7d4d93c0-3e2b-44d3-9e2a-86be1ac9effb">
+<img width="932" alt="LZW decimal" src="https://github.com/SulthanDA28/LZW-13521159/assets/110533939/048e7e85-f121-4064-b216-34d243405fa4">
+
 
 <br>
 
 3. Dengan algoritma LZW+RLE dengan keluaran binary
-<img width="935" alt="image" src="https://github.com/SulthanDA28/LZW-13521159/assets/110533939/24fe143f-ee77-4345-8de8-a186c23285ba">
+<img width="940" alt="LZWRLE binary" src="https://github.com/SulthanDA28/LZW-13521159/assets/110533939/402a56e6-5c76-4193-b396-aeb51de6ebd4">
 
 
 
